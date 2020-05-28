@@ -11,8 +11,8 @@ public class HDFSOperate {
     public void mkdir() throws IOException {
 
         Configuration configuration = new Configuration();
-        configuration.set("fs.defaultFS", "hdfs://ec2-34-240-61-244.eu-west-1.compute.amazonaws.com:8020");
-//        configuration.set("")
+        String nameNodeDns = System.getenv("NAMENODE_DNS");
+        configuration.set("fs.defaultFS", "hdfs://" + nameNodeDns + ":8020");
 
         FileSystem fs = FileSystem.get(configuration);
 
