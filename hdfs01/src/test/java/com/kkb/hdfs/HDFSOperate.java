@@ -4,21 +4,33 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 
 public class HDFSOperate {
+
+    static String nameNodeURL =  "hdfs://" + System.getenv("NAMENODE_DNS") + ":8020";
+    static Configuration configuration = new Configuration();
+
+    static FileSystem getFilesystem () throws IOException {
+        configuration.set("fs.defaultFS", nameNodeURL);
+        return FileSystem.get(configuration);
+    }
+
     @Test
     public void mkdir() throws IOException {
-
-        Configuration configuration = new Configuration();
-        String nameNodeDns = System.getenv("NAMENODE_DNS");
-        configuration.set("fs.defaultFS", "hdfs://" + nameNodeDns + ":8020");
-
-        FileSystem fs = FileSystem.get(configuration);
-
-        fs.mkdirs(new Path("/kaikeba/dir1"));
-
+        FileSystem fs = HDFSOperate.getFilesystem();
+        fs.mkdirs(new Path("/kkb/dir1"));
         fs.close();
+    }
 
+    @Test
+    public void putLocalFile() throws IOException {
+        FileSystem fs = HDFSOperate.getFilesystem();
+
+        String currentDir = new File("").getAbsolutePath();
+        fs.copyFromLocalFile(
+                new Path("file://" + currentDir + "/pom.xml"),
+                new Path(HDFSOperate.nameNodeURL + "/kkb/dir1/pom.xml"));
     }
 }
