@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 
-public class HDFSOperate {
+public class TestHdfsOperate {
 
     static String nameNodeURL =  "hdfs://node01:8020";
     static Configuration configuration = new Configuration();
@@ -20,19 +20,19 @@ public class HDFSOperate {
 
     @Test
     public void mkdir() throws IOException {
-        FileSystem fs = HDFSOperate.getFilesystem();
+        FileSystem fs = TestHdfsOperate.getFilesystem();
         fs.mkdirs(new Path("/kkb/dir1"));
         fs.close();
     }
 
     @Test
     public void putLocalFile() throws IOException {
-        FileSystem fs = HDFSOperate.getFilesystem();
+        FileSystem fs = TestHdfsOperate.getFilesystem();
 
         String currentDir = new File("").getAbsolutePath();
         fs.copyFromLocalFile(
                 new Path("file://" + currentDir + "/pom.xml"),
-                new Path(HDFSOperate.nameNodeURL + "/kkb/dir1/pom.xml"));
+                new Path(TestHdfsOperate.nameNodeURL + "/kkb/dir1/pom.xml"));
         fs.close();
     }
 }
