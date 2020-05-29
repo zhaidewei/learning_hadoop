@@ -1,4 +1,5 @@
 package com.kkb.hdfs;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -9,7 +10,7 @@ import java.io.IOException;
 
 public class HDFSOperate {
 
-    static String nameNodeURL =  "hdfs://" + System.getenv("NAMENODE_DNS") + ":8020";
+    static String nameNodeURL =  "hdfs://node01:8020";
     static Configuration configuration = new Configuration();
 
     static FileSystem getFilesystem () throws IOException {
