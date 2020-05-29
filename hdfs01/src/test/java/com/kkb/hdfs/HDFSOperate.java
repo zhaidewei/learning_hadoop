@@ -33,5 +33,6 @@ public class HDFSOperate {
         fs.copyFromLocalFile(
                 new Path("file://" + currentDir + "/pom.xml"),
                 new Path(HDFSOperate.nameNodeURL + "/kkb/dir1/pom.xml"));
+        fs.close();
     }
 }
