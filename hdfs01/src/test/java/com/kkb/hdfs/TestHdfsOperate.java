@@ -19,14 +19,14 @@ public class TestHdfsOperate {
     }
 
     @Test
-    public void mkdir() throws IOException {
+    public void testMkdir() throws IOException {
         FileSystem fs = TestHdfsOperate.getFilesystem();
         fs.mkdirs(new Path("/kkb/dir1"));
         fs.close();
     }
 
     @Test
-    public void putLocalFile() throws IOException {
+    public void testCopyFromLocal() throws IOException {
         FileSystem fs = TestHdfsOperate.getFilesystem();
 
         String currentDir = new File("").getAbsolutePath();
