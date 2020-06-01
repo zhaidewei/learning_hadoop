@@ -1,4 +1,4 @@
-package com.kkb;
+package com.kkb.hdfs;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.conf.Configuration;
