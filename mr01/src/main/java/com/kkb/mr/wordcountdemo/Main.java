@@ -11,7 +11,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class WordCountDemo extends Configured implements Tool {
+public class Main extends Configured implements Tool {
 
     @Override
     public int run(String[] args) throws Exception {
@@ -21,7 +21,7 @@ public class WordCountDemo extends Configured implements Tool {
         Job job = Job.getInstance(conf,"WordCountDemo");
         //实际工作当中，程序运行完成之后一般都是打包到集群上面去运行，打成一个jar包
         //如果要打包到集群上面去运行，必须添加以下设置
-        job.setJarByClass(WordCountDemo.class);
+        job.setJarByClass(Main.class);
         //第一步：读取文件，解析成key,value对，k1:行偏移量 v1：一行文本内容
         //指定我们去哪一个路径读取文件
         job.setInputFormatClass(TextInputFormat.class);
@@ -49,7 +49,7 @@ public class WordCountDemo extends Configured implements Tool {
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-        int run = ToolRunner.run(conf, new WordCountDemo(), args);
+        int run = ToolRunner.run(conf, new Main(), args);
         System.exit(run);
 
     }

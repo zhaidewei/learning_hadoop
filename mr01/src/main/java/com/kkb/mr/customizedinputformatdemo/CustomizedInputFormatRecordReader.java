@@ -14,7 +14,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
 import java.io.IOException;
 
-public class CustomizedRecordReader extends RecordReader<NullWritable, BytesWritable> {
+public class CustomizedInputFormatRecordReader extends RecordReader<NullWritable, BytesWritable> {
 
     //跟踪变量放在这里声明，只声明不赋值。
     private BytesWritable byteswritable;

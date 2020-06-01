@@ -14,9 +14,9 @@ import java.io.IOException;
 public class CustomizedInputFormat extends FileInputFormat<NullWritable, BytesWritable> {
     @Override
     public RecordReader<NullWritable, BytesWritable> createRecordReader(InputSplit inputSplit, TaskAttemptContext taskAttemptContext) throws IOException, InterruptedException {
-        CustomizedRecordReader customizedRecordReader = new CustomizedRecordReader();
-        customizedRecordReader.initialize(inputSplit, taskAttemptContext);
-        return customizedRecordReader;
+        CustomizedInputFormatRecordReader customizedInputFormatRecordReader = new CustomizedInputFormatRecordReader();
+        customizedInputFormatRecordReader.initialize(inputSplit, taskAttemptContext);
+        return customizedInputFormatRecordReader;
 
     }
 
