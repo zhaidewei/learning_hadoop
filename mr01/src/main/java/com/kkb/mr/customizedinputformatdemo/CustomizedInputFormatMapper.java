@@ -12,7 +12,6 @@ public class CustomizedInputFormatMapper extends Mapper<NullWritable, BytesWrita
 
     @Override
     protected void map(NullWritable key, BytesWritable value, Context context) throws IOException, InterruptedException {
-        super.map(key, value, context);
         // get file name: context -> InputSplit -> file name
         FileSplit fileSplit = (FileSplit) context.getInputSplit();
         String fileName = fileSplit.getPath().getName();
