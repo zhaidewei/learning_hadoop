@@ -1,4 +1,4 @@
-package com.kkb.mr02;
+package com.kkb.mr02.partittioner;
 
 import org.apache.hadoop.io.Writable;
 
