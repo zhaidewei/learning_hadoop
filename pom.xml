@@ -11,6 +11,7 @@
     <modules>
         <module>hdfs01</module>
         <module>mr01</module>
+        <module>mr02</module>
     </modules>
 
     <repositories>
